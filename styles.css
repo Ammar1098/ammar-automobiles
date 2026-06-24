@@ -1,0 +1,808 @@
+/* =============================================================================
+   KATTI AUTOMOBILES — STYLES
+   Identity: a roadside garage's parts counter. Steel-charcoal walls, an oxide
+   rust accent for action, safety-amber hazard striping marking transitions,
+   and "hanging tag" cards (the kind wired to a spare part on a shelf) used
+   throughout for navigation. Condensed industrial type for headings, plain
+   readable type for body, monospace for anything that reads like inventory
+   data (phone numbers, prices, part counts).
+   ============================================================================= */
+
+:root {
+  --ink: #15181a;
+  --steel: #232b30;
+  --steel-2: #2e373d;
+  --rust: #c75a33;
+  --rust-dark: #a3461f;
+  --safety: #e8a33d;
+  --paper: #efe9da;
+  --paper-2: #f8f4e9;
+  --mist: #aab4b8;
+  --mist-dim: #6e7a7f;
+
+  --font-display: "Rajdhani", "Arial Narrow", sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+
+  --radius: 6px;
+  --container: 1100px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--paper-2);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg { display: block; max-width: 100%; }
+
+a { color: inherit; }
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+}
+
+.icon { width: 28px; height: 28px; }
+
+/* ---------- layout helpers ------------------------------------------ */
+.wrap {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+/* ---------- hazard stripe divider (signature motif) ------------------ */
+.hazard {
+  height: 10px;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--safety) 0 18px,
+    var(--ink) 18px 36px
+  );
+}
+
+/* ---------- top bar ---------------------------------------------------*/
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--ink);
+  border-bottom: 1px solid var(--steel-2);
+}
+.topbar .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 0.03em;
+  color: var(--paper-2);
+  text-decoration: none;
+}
+.site-logo {
+  height: 60px;
+  width: auto;
+  display: block;
+}
+.brand-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: 0.03em;
+  color: var(--paper-2);
+  white-space: nowrap;
+}
+
+.topbar-actions { display: flex; gap: 10px; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: transform 0.12s ease, background 0.15s ease;
+}
+.btn:active { transform: translateY(1px); }
+
+.btn-rust { background: var(--rust); color: #fff7ef; }
+.btn-rust:hover { background: var(--rust-dark); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--paper-2);
+  border: 1.5px solid var(--steel-2);
+}
+.btn-ghost:hover { border-color: var(--mist); }
+
+.btn-sm { padding: 7px 12px; font-size: 0.82rem; }
+
+.btn-whatsapp { background: #2e9e63; color: #fff; }
+.btn-whatsapp:hover { background: #25824f; }
+
+/* ---------- hero ------------------------------------------------------*/
+.hero {
+  background: linear-gradient(180deg, var(--steel) 0%, var(--ink) 100%);
+  padding: 64px 0 56px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  right: -120px;
+  top: -60px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(199,90,51,0.18), transparent 70%);
+}
+.hero .wrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 20px;
+}
+
+.hero-copy {
+  flex: 1 1 55%;
+  min-width: 0;
+}
+
+.hero-banner {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  display: block;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--safety);
+  margin: 0 0 14px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  line-height: 1.06;
+  letter-spacing: 0.01em;
+  margin: 0 0 18px;
+  max-width: 14ch;
+  color: var(--paper-2);
+}
+
+.hero p.lede {
+  font-size: 1.08rem;
+  color: var(--mist);
+  max-width: 46ch;
+  margin: 0 0 28px;
+}
+
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.brand-monogram {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ---------- section heads ---------------------------------------------*/
+.section { padding: 52px 0; scroll-margin-top: 60px; }
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.section-head h2 {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+.section-head .hint {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--mist-dim);
+}
+
+.section-sub {
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  color: var(--mist);
+  max-width: 56ch;
+  margin: 0 0 24px;
+}
+
+/* ---------- breadcrumb tag-chain (signature element) ------------------*/
+.tagtrail {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  padding: 7px 14px 7px 10px;
+  border-radius: 4px 14px 14px 4px;
+  position: relative;
+}
+.tag::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ink);
+  flex: none;
+}
+.tag.is-link {
+  cursor: pointer;
+  background: var(--paper-2);
+}
+.tag.is-link:hover { background: #fff; }
+.tag.is-current { background: var(--safety); }
+.tagtrail .sep { color: var(--mist-dim); font-family: var(--font-mono); }
+
+/* ---------- grids -------------------------------------------------------*/
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.card {
+  background: var(--steel);
+  border: 1px solid var(--steel-2);
+  border-radius: var(--radius);
+  padding: 18px 14px;
+  text-align: left;
+  color: var(--paper-2);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  transition: border-color 0.15s ease, transform 0.12s ease;
+}
+.card:hover {
+  border-color: var(--rust);
+  transform: translateY(-2px);
+}
+.card .icon { color: var(--safety); width: 34px; height: 34px; }
+.card .card-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+.card .card-meta {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--mist-dim);
+}
+
+/* part card has a request button pinned to the bottom */
+.part-card { justify-content: space-between; }
+.part-card .btn { margin-top: 4px; align-self: stretch; justify-content: center; }
+
+/* ---------- second-hand car banner (roadside hoarding) -----------------*/
+.hoarding {
+  background: var(--safety);
+  color: var(--ink);
+  border-radius: var(--radius);
+  padding: 36px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  position: relative;
+  border: 3px solid var(--ink);
+}
+.hoarding::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1.5px dashed rgba(21,24,26,0.35);
+  border-radius: 3px;
+  pointer-events: none;
+}
+.hoarding h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin: 0 0 8px;
+  max-width: 24ch;
+}
+.hoarding p {
+  margin: 0;
+  max-width: 40ch;
+  font-size: 0.98rem;
+}
+.hoarding .btn-rust { background: var(--ink); color: var(--paper); }
+.hoarding .btn-rust:hover { background: #000; }
+
+/* ---------- footer -------------------------------------------------------*/
+footer {
+  border-top: 1px solid var(--steel-2);
+  padding: 36px 0 90px;
+  color: var(--mist);
+  font-size: 0.92rem;
+}
+footer .foot-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+footer .foot-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--paper-2);
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+footer .mono { font-family: var(--font-mono); color: var(--mist); }
+
+/* ---------- floating WhatsApp button --------------------------------- */
+.fab-whatsapp {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 50;
+  background: #2e9e63;
+  color: #fff;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+.fab-whatsapp svg { width: 28px; height: 28px; }
+.fab-whatsapp:hover { background: #25824f; }
+
+/* ---------- modal / job card form ------------------------------------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10,12,13,0.72);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 28px 16px;
+  z-index: 60;
+  overflow-y: auto;
+}
+.modal-overlay[hidden] { display: none; }
+
+.jobcard {
+  background: var(--paper-2);
+  color: var(--ink);
+  width: 100%;
+  max-width: 460px;
+  border-radius: 8px;
+  padding: 26px 24px 24px;
+  position: relative;
+  border-top: 6px solid var(--rust);
+}
+
+.jobcard .close-x {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: transparent;
+  color: var(--mist-dim);
+  font-size: 1.3rem;
+  line-height: 1;
+  padding: 4px;
+}
+.jobcard .close-x:hover { color: var(--ink); }
+
+.jobcard .eyebrow-dark {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rust-dark);
+  margin: 0 0 6px;
+}
+.jobcard h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  margin: 0 0 4px;
+}
+.jobcard .part-sub {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--mist-dim);
+  margin: 0 0 18px;
+}
+
+.field { margin-bottom: 14px; }
+.field label {
+  display: block;
+  font-size: 0.84rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: var(--ink);
+}
+.field .opt {
+  font-weight: 400;
+  color: var(--mist-dim);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+}
+.field input[type="text"],
+.field input[type="tel"],
+.field textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 5px;
+  border: 1.5px solid #d8d0bd;
+  background: #fff;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+.field input:focus, .field textarea:focus {
+  outline: 2px solid var(--rust);
+  outline-offset: 1px;
+}
+.field textarea { resize: vertical; min-height: 64px; }
+
+.file-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1.5px dashed #d8d0bd;
+  border-radius: 5px;
+  padding: 10px 12px;
+  background: #fff;
+}
+.file-row input[type="file"] { font-size: 0.84rem; max-width: 100%; }
+.file-note {
+  font-size: 0.78rem;
+  color: var(--mist-dim);
+  margin-top: 6px;
+}
+
+.jobcard .submit-row { margin-top: 18px; }
+.jobcard .btn-rust { width: 100%; justify-content: center; padding: 12px; }
+
+.toast {
+  position: fixed;
+  bottom: 88px;
+  right: 18px;
+  max-width: 280px;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 12px 14px;
+  border-radius: 6px;
+  font-size: 0.86rem;
+  border-left: 4px solid var(--rust);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  z-index: 70;
+}
+.toast[hidden] { display: none; }
+
+/* ---------- media tile (car / part photo, with auto-placeholder) ------ */
+.media-tile {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.media-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.media-tile.is-placeholder::after {
+  content: "Photo coming soon";
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: #999;
+  text-align: center;
+  padding: 6px;
+  line-height: 1.5;
+}
+
+/* ---------- brand / model cards (with media tile) -------------------- */
+.brand-card .media-tile,
+.model-card .media-tile { margin-bottom: 2px; }
+
+/* ---------- part cards (multi-select with checkmark) ----------------- */
+.part-card {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+.part-card .checkmark {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--steel-2);
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  color: transparent;
+  transition: background 0.12s, border-color 0.12s, color 0.12s;
+  z-index: 1;
+}
+.part-card.is-selected {
+  border-color: var(--rust);
+  background: #2a1510;
+}
+.part-card.is-selected .checkmark {
+  background: var(--rust);
+  border-color: var(--rust);
+  color: #fff;
+}
+.part-card:hover:not(.is-selected) { border-color: var(--mist); }
+
+.parts-hint {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--mist-dim);
+  margin: 0 0 18px;
+}
+.parts-hint strong { color: var(--safety); font-weight: 500; }
+
+/* ---------- side-by-side field row ----------------------------------- */
+.field-row {
+  display: flex;
+  gap: 12px;
+}
+.field-row .field { flex: 1 1 0; min-width: 0; }
+@media (max-width: 400px) {
+  .field-row { flex-direction: column; gap: 0; }
+}
+
+/* ---------- year picker popup ---------------------------------------- */
+.year-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10,12,13,0.78);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 16px;
+  z-index: 60;
+  overflow-y: auto;
+}
+.year-popup-overlay[hidden] { display: none; }
+
+.year-popup {
+  background: var(--steel);
+  border-radius: 10px;
+  border-top: 6px solid var(--safety);
+  padding: 28px 24px 24px;
+  width: 100%;
+  max-width: 380px;
+  position: relative;
+}
+.year-popup h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  margin: 0 0 6px;
+  color: var(--paper-2);
+}
+.year-popup-hint {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--mist-dim);
+  margin: 0 0 18px;
+}
+
+.year-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.year-btn {
+  background: var(--steel-2);
+  color: var(--paper-2);
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 11px 4px;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+}
+.year-btn:hover { background: var(--rust); color: #fff; }
+.year-btn.is-dim { opacity: 0.32; }
+.year-btn.is-dim:hover { background: var(--steel-2); color: var(--paper-2); }
+
+/* ---------- sticky selection tray ------------------------------------ */
+.selection-tray {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--ink);
+  border-top: 2px solid var(--rust);
+  z-index: 45;
+  padding: 12px 0;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.4);
+}
+.selection-tray[hidden] { display: none; }
+.selection-tray .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.tray-count {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: var(--safety);
+  white-space: nowrap;
+}
+.tray-actions { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
+
+/* Push FAB up when tray is visible so they don't overlap */
+body.tray-active .fab-whatsapp { bottom: calc(64px + 14px); }
+/* Extra footer clearance so tray doesn't hide content */
+body.tray-active footer { padding-bottom: calc(90px + 64px); }
+
+/* ---------- success / WA handoff popup ------------------------------- */
+.success-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10,12,13,0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 16px;
+  z-index: 80;
+}
+.success-overlay[hidden] { display: none; }
+
+.success-popup {
+  background: var(--paper-2);
+  color: var(--ink);
+  border-radius: 10px;
+  padding: 36px 28px;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+}
+.success-icon {
+  width: 54px;
+  height: 54px;
+  background: #2e9e63;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin: 0 auto 18px;
+}
+.success-popup h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin: 0 0 8px;
+}
+.success-popup p {
+  color: var(--mist-dim);
+  font-size: 0.95rem;
+  margin: 0 0 22px;
+}
+.success-popup .btn {
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 10px;
+  display: flex;
+}
+
+/* ---------- inline hoarding (injected in parts view) ----------------- */
+.hoarding-inline { margin-top: 40px; }
+
+/* ---------- empty state ------------------------------------------------*/
+.empty {
+  font-family: var(--font-mono);
+  color: var(--mist-dim);
+  font-size: 0.9rem;
+  padding: 30px 0;
+}
+
+/* ---------- focus visibility -------------------------------------------*/
+a:focus-visible, button:focus-visible, .card:focus-visible, .tag:focus-visible {
+  outline: 2px solid var(--safety);
+  outline-offset: 2px;
+}
+
+/* ---------- reduced motion ----------------------------------------------*/
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .card { transition: none; }
+}
+
+/* ---------- responsive ---------------------------------------------------*/
+@media (max-width: 900px) {
+  .hero .wrap {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .hero-copy { flex: none; width: 100%; }
+  .hero-banner { width: 100%; }
+}
+
+@media (max-width: 640px) {
+  .topbar .wrap { flex-wrap: wrap; gap: 10px; }
+  .hero { padding: 48px 0 40px; }
+  .hoarding { padding: 26px 18px; }
+  .section { padding: 40px 0; }
+}

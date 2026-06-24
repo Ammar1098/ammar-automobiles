@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ammar Automobiles — Spare parts from Delhi, delivered to Athani</title>
+<meta name="description" content="Browse car parts by brand and model, get a fair price from Delhi, and have it delivered to Athani. Order directly on WhatsApp." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/png" href="assets/favicon-ammar-automobiles.png" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a href="#top" class="brand-badge" aria-label="Ammar Automobiles — home">
+      <img src="assets/favicon-ammar-automobiles.png" alt="" class="site-logo" aria-hidden="true" />
+      <span class="brand-name">Ammar Automobiles</span>
+    </a>
+    <div class="topbar-actions">
+      <a class="btn btn-whatsapp btn-sm" data-wa-general target="_blank" rel="noopener">
+        Chat on WhatsApp
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">Athani · Belgaum District · Karnataka</p>
+        <h1 id="heroHeading">Spare parts from Delhi.<br />Delivered to Athani.</h1>
+        <p class="lede">
+          Pick your car below, choose the parts you need, and send us your
+          details on WhatsApp. We check Delhi market prices, confirm the
+          final cost with you first, and ship it to your door.
+        </p>
+        <div class="hero-actions">
+          <a href="#catalog" class="btn btn-rust">Browse Parts</a>
+          <a class="btn btn-ghost" data-wa-general target="_blank" rel="noopener">Chat on WhatsApp</a>
+        </div>
+      </div>
+      <img class="hero-banner" src="assets/ammarautomobiles-homebanner.png"
+           alt="Spare parts and second-hand cars delivered from Delhi to Karnataka"
+           onerror="this.style.display='none'" />
+    </div>
+  </section>
+
+  <div class="hazard" role="presentation"></div>
+
+  <section class="section" id="catalog">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="sectionTitle">Pick your car</h2>
+        <span class="hint" id="sectionHint"></span>
+      </div>
+      <nav class="tagtrail" id="tagtrail" aria-label="Browse trail"></nav>
+      <div id="catalogRoot"></div>
+    </div>
+  </section>
+
+  <div class="hazard" role="presentation"></div>
+
+  <!-- Static second-hand car banner (homepage) -->
+  <section class="section" id="secondhandSection">
+    <div class="wrap">
+      <div class="hoarding">
+        <div>
+          <h3 id="adHeading"></h3>
+          <p id="adBody"></p>
+        </div>
+        <button type="button" class="btn btn-rust" id="adCta"></button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand" id="footBrand">Ammar Automobiles</div>
+        <div id="footLocation"></div>
+        <p id="footNote" style="max-width:42ch; margin-top:10px;"></p>
+      </div>
+      <div>
+        <a class="mono" id="footWhatsapp" data-wa-general target="_blank" rel="noopener" style="display:block; margin-bottom:6px;"></a>
+        <a class="mono" id="footCall" style="display:block;"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp button -->
+<a class="fab-whatsapp" data-wa-general target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+    <path d="M16.04 3.2c-7.07 0-12.8 5.73-12.8 12.8 0 2.26.6 4.38 1.64 6.21L3.2 28.8l6.78-1.62a12.74 12.74 0 0 0 6.06 1.54c7.07 0 12.8-5.73 12.8-12.8s-5.73-12.72-12.8-12.72Zm0 23.2c-1.94 0-3.78-.51-5.36-1.4l-.38-.22-4 .96.97-3.9-.25-.4a10.4 10.4 0 0 1-1.6-5.6c0-5.75 4.67-10.4 10.4-10.4s10.4 4.65 10.4 10.4-4.65 10.56-10.18 10.56Zm5.7-7.78c-.31-.16-1.83-.9-2.12-1-.28-.1-.48-.16-.69.16-.2.31-.78 1-.96 1.2-.18.2-.36.23-.66.08-1.8-.9-2.98-1.6-4.17-3.63-.32-.55.32-.51.91-1.7.1-.2.05-.38-.04-.54-.1-.16-.86-2.07-1.18-2.83-.31-.74-.63-.64-.86-.65h-.74c-.23 0-.6.08-.92.43-.32.36-1.23 1.2-1.23 2.94 0 1.73 1.26 3.41 1.44 3.65.18.23 2.46 3.76 6.03 5.13 2.91 1.12 3.5.9 4.13.84.64-.06 2.07-.84 2.36-1.66.29-.81.29-1.5.2-1.66-.08-.16-.31-.25-.62-.4Z"/>
+  </svg>
+</a>
+
+<!-- Sticky selection tray (shows when parts are selected) -->
+<div class="selection-tray" id="selectionTray" hidden>
+  <div class="wrap">
+    <span class="tray-count" id="trayCount">0 parts selected</span>
+    <div class="tray-actions">
+      <button type="button" class="btn btn-ghost btn-sm" id="trayClear">Clear</button>
+      <button type="button" class="btn btn-rust" id="trayOrder">Order These Parts</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast notification -->
+<div class="toast" id="toast" role="status" hidden></div>
+
+<!-- ── Year picker popup ────────────────────────────────────────────── -->
+<div class="year-popup-overlay" id="yearPopupOverlay" hidden>
+  <div class="year-popup">
+    <button type="button" class="close-x" id="closeYearPopup" aria-label="Close">&times;</button>
+    <p class="eyebrow-dark">Step 2 of 3</p>
+    <h3 id="yearPopupTitle">Which year is your car?</h3>
+    <p class="year-popup-hint">Years shown dimmed are outside this model's production range — you can still select them.</p>
+    <div class="year-grid" id="yearGrid"></div>
+  </div>
+</div>
+
+<!-- ── Order form modal ─────────────────────────────────────────────── -->
+<div class="modal-overlay" id="modalOverlay" hidden>
+  <form class="jobcard" id="jobcardForm" novalidate>
+    <button type="button" class="close-x" id="closeModalBtn" aria-label="Close">&times;</button>
+    <p class="eyebrow-dark">Order parts</p>
+    <h3>Your delivery details</h3>
+    <p class="part-sub" id="jobcardPartName"></p>
+
+    <div class="field-row">
+      <div class="field">
+        <label for="custFirst">First name</label>
+        <input type="text" id="custFirst" required autocomplete="given-name" />
+      </div>
+      <div class="field">
+        <label for="custLast">Last name</label>
+        <input type="text" id="custLast" required autocomplete="family-name" />
+      </div>
+    </div>
+    <div class="field">
+      <label for="custShop">Shop name <span class="opt">optional</span></label>
+      <input type="text" id="custShop" autocomplete="organization" />
+    </div>
+    <div class="field">
+      <label for="custMobile">Mobile number</label>
+      <input type="tel" id="custMobile" required autocomplete="tel"
+             pattern="[0-9]{10}" placeholder="10-digit mobile" />
+    </div>
+    <div class="field">
+      <label for="custAddress">Full delivery address</label>
+      <textarea id="custAddress" required rows="2" autocomplete="street-address"></textarea>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label for="custCity">City / Town</label>
+        <input type="text" id="custCity" required autocomplete="address-level2" />
+      </div>
+      <div class="field">
+        <label for="custPin">Pin code</label>
+        <input type="text" id="custPin" required pattern="[0-9]{6}" maxlength="6"
+               inputmode="numeric" placeholder="6 digits" />
+      </div>
+    </div>
+    <div class="field">
+      <label for="custBudget">Your budget <span class="opt">optional</span></label>
+      <input type="text" id="custBudget" placeholder="e.g. ₹2,500" />
+    </div>
+
+    <div class="submit-row">
+      <button type="submit" class="btn btn-rust" id="orderSubmitBtn">Send Order</button>
+    </div>
+  </form>
+</div>
+
+<!-- ── Success / WhatsApp handoff popup ─────────────────────────────── -->
+<div class="success-overlay" id="successOverlay" hidden>
+  <div class="success-popup">
+    <div class="success-icon" aria-hidden="true">✓</div>
+    <h3>Order sent!</h3>
+    <p id="successMsg">Your details have been received. Open WhatsApp to confirm your order with us.</p>
+    <a class="btn btn-whatsapp" id="successWaBtn" target="_blank" rel="noopener">
+      Chat with us on WhatsApp
+    </a>
+    <button type="button" class="btn btn-ghost" id="successClose">Close</button>
+  </div>
+</div>
+
+<!-- ── Second-hand car enquiry modal ────────────────────────────────── -->
+<div class="modal-overlay" id="secondhandOverlay" hidden>
+  <form class="jobcard" id="secondhandForm" novalidate>
+    <button type="button" class="close-x" id="closeSecondhandBtn" aria-label="Close">&times;</button>
+    <p class="eyebrow-dark">Second-hand car enquiry</p>
+    <h3>Tell us what you're looking for</h3>
+    <p class="part-sub">We'll find good-condition cars from Delhi NCR and arrange transport to Karnataka.</p>
+
+    <div class="field">
+      <label for="sh_name">Your name</label>
+      <input type="text" id="sh_name" required autocomplete="name" />
+    </div>
+    <div class="field">
+      <label for="sh_mobile">Mobile number</label>
+      <input type="tel" id="sh_mobile" required autocomplete="tel"
+             pattern="[0-9]{10}" placeholder="10-digit mobile" />
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label for="sh_company">Car company</label>
+        <input type="text" id="sh_company" required placeholder="e.g. Maruti" />
+      </div>
+      <div class="field">
+        <label for="sh_model">Car model</label>
+        <input type="text" id="sh_model" required placeholder="e.g. Swift" />
+      </div>
+    </div>
+    <div class="field">
+      <label for="sh_budget">Budget <span class="opt">optional</span></label>
+      <input type="text" id="sh_budget" placeholder="e.g. ₹3 lakh" />
+    </div>
+    <div class="field">
+      <label for="sh_address">Your address</label>
+      <textarea id="sh_address" required rows="2" autocomplete="street-address"></textarea>
+    </div>
+
+    <div class="submit-row">
+      <button type="submit" class="btn btn-rust" id="shSubmitBtn">Send Enquiry</button>
+    </div>
+  </form>
+</div>
+
+<!-- ── Success popup for second-hand enquiry ────────────────────────── -->
+<div class="success-overlay" id="shSuccessOverlay" hidden>
+  <div class="success-popup">
+    <div class="success-icon" aria-hidden="true">✓</div>
+    <h3>Enquiry sent!</h3>
+    <p>We've received your request. Open WhatsApp to chat with us about the right car for you.</p>
+    <a class="btn btn-whatsapp" id="shSuccessWaBtn" target="_blank" rel="noopener">
+      Chat with us on WhatsApp
+    </a>
+    <button type="button" class="btn btn-ghost" id="shSuccessClose">Close</button>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="icons.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

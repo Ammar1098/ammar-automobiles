@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s http://localhost:8765/data.js)",
+      "Bash(node -e ' *)",
+      "Bash(node --check \"D:/Personal/car/script.js\")",
+      "PowerShell(gh *)"
+    ]
+  }
+}
